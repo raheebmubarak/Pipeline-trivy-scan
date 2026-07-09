@@ -2,11 +2,19 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "trivy-app"
+        IMAGE_NAME = "trivy-demo"
         IMAGE_TAG = "latest"
+        TRIVY_PATH = "C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\WinGet\\Packages\\AquaSecurity.Trivy\\trivy.exe"
     }
 
     stages {
+
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/raheebmubarak/Pipeline-trivy-scan.git'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t %IMAGE_NAME%:%IMAGE_TAG% .'
@@ -15,7 +23,7 @@ pipeline {
 
         stage('Trivy Image Scan') {
             steps {
-                bat 'trivy image %IMAGE_NAME%:%IMAGE_TAG%'
+                bat '"%TRIVY_PATH%" image %IMAGE_NAME%:%IMAGE_TAG%'
             }
         }
     }
