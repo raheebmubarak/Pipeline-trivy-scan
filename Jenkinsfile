@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "trivy-demo"
         IMAGE_TAG = "latest"
-        TRIVY_PATH = "C:\\Users\\ASUS\\AppData\\Local\\Microsoft\\WinGet\\Packages\\AquaSecurity.Trivy\\trivy.exe"
+        TRIVY_PATH = "C:\Users\ASUS\AppData\Local\Microsoft\WinGet\Packages\AquaSecurity.Trivy_Microsoft.Winget.Source_8wekyb3d8bbwe\trivy"
     }
 
     stages {
